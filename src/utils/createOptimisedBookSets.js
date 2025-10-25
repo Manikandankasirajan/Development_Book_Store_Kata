@@ -23,7 +23,7 @@ export default function createOptimisedBookSets(bookSets) {
 		);
 
 		for (const [bookSetSize, count] of Object.entries(bookSetAndCountMap)) {
-			for (let index = 0; index < count; index++) {
+			for (let i = 0; i < count; i++) {
 				optimisedBookSets.push(
 					createPlaceholderBookSets(parseInt(bookSetSize))
 				);
