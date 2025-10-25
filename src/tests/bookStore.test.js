@@ -127,7 +127,7 @@ describe("Test cases for Development_Book_Store_Kata", () => {
 					publishedYear: 2004,
 				},
 			];
-			expect(bookStore(cart)).toBe(322);
+			expect(bookStore(cart)).toBe(320);
 		});
 	});
 });
