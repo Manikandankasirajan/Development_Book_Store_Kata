@@ -1,5 +1,7 @@
+import isCartEmpty from "./utils/isCartEmpty";
+
 export default function bookStore(cart) {
-	if (!cart || cart.length === 0) {
+	if (isCartEmpty(cart)) {
 		return "The Cart is Empty...";
 	}
 }
