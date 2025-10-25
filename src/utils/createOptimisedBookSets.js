@@ -22,6 +22,14 @@ export default function createOptimisedBookSets(bookSets) {
 			(set) => set.length !== 5 && set.length !== 3
 		);
 
+		for (const [bookSetSize, count] of Object.entries(bookSetAndCountMap)) {
+			for (let index = 0; index < count; index++) {
+				optimisedBookSets.push(
+					createPlaceholderBookSets(parseInt(bookSetSize))
+				);
+			}
+		}
+
 		return optimisedBookSets;
 	} else {
 		return bookSets;
