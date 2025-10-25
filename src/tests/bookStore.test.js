@@ -76,7 +76,7 @@ describe("Test cases for Development_Book_Store_Kata", () => {
 			];
 			expect(bookStore(cart)).toBe(185);
 		});
-		test("test case to return final price of the books after applying the discounts if applicable when the cart has duplicate entries of books from the list", () => {
+		test("test case to check if the function returns better final price by optimising the booksets for better discounts [cost bookset of 5 + 3 is 322 but by better optimisation we can change the sets to 4 + 4 = 320 ]", () => {
 			const cart = [
 				{
 					bookId: 1,
