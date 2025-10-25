@@ -1,4 +1,4 @@
-import checkOut from "./utils/calculatePrice";
+import checkOut from "./utils/checkOut";
 import isCartEmpty from "./utils/isCartEmpty";
 
 export default function bookStore(cart) {
