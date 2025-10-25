@@ -1,5 +1,5 @@
-import checkOut from "./utils/checkOut";
 import isCartEmpty from "./utils/isCartEmpty";
+import checkOut from "./utils/checkOut";
 
 export default function bookStore(cart) {
 	if (isCartEmpty(cart)) {
