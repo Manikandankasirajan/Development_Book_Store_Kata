@@ -26,4 +26,21 @@ describe("Test cases for Development_Book_Store_Kata", () => {
 		const cart = BOOK_LIST.slice(0);
 		expect(bookStore(cart)).toBe(187);
 	});
+	test("test case to return 'The cart has duplicate entries...' if the cart has duplicate entries of books from the list", () => {
+		const cart = [
+			{
+				bookId: 1,
+				title: "Clean Code",
+				author: "Robert Martin",
+				publishedYear: 2008,
+			},
+			{
+				bookId: 1,
+				title: "Clean Code",
+				author: "Robert Martin",
+				publishedYear: 2008,
+			},
+		];
+		expect(bookStore(cart)).toBe("The cart has duplicate entries...");
+	});
 });
