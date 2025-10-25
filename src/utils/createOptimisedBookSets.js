@@ -1,11 +1,11 @@
+import canOptimiseBookSets from "./canOptimiseBookSets";
+import createBookSetAndCountMap from "./createBookSetAndCountMap";
+import createPlaceholderBookSets from "./createPlaceholderBookSets";
+
 export default function createOptimisedBookSets(bookSets) {
-	const bookSetAndCountMap = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-	for (const bookSet of bookSets) {
-		if (bookSet.length === 3 || bookSet.length === 5) {
-			bookSetAndCountMap[bookSet.length]++;
-		}
-	}
-	if (bookSetAndCountMap[3] > 0 && bookSetAndCountMap[5] > 0) {
+	const bookSetAndCountMap = createBookSetAndCountMap(bookSets);
+
+	if (canOptimiseBookSets(bookSetAndCountMap)) {
 		const optimisationPairs = Math.min(
 			bookSetAndCountMap[3],
 			bookSetAndCountMap[5]
@@ -14,8 +14,8 @@ export default function createOptimisedBookSets(bookSets) {
 		for (let i = 0; i < optimisationPairs; i++) {
 			bookSetAndCountMap[3]--;
 			bookSetAndCountMap[5]--;
-			bookSets.push(Array(4).fill("Placeholder"));
-			bookSets.push(Array(4).fill("Placeholder"));
+			bookSets.push(createPlaceholderBookSets(4));
+			bookSets.push(createPlaceholderBookSets(4));
 		}
 
 		const optimisedBookSets = bookSets.filter(
