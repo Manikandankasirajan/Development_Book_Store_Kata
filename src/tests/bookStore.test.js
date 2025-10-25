@@ -26,7 +26,7 @@ describe("Test cases for Development_Book_Store_Kata", () => {
 		const cart = BOOK_LIST.slice(0);
 		expect(bookStore(cart)).toBe(187);
 	});
-	test("test case to return 'The cart has duplicate entries...' if the cart has duplicate entries of books from the list", () => {
+	test("test case to return final price of the books after applying the discounts if applicable when the cart has duplicate entries of books from the list", () => {
 		const cart = [
 			{
 				bookId: 1,
@@ -41,6 +41,6 @@ describe("Test cases for Development_Book_Store_Kata", () => {
 				publishedYear: 2008,
 			},
 		];
-		expect(bookStore(cart)).toBe("The cart has duplicate entries...");
+		expect(bookStore(cart)).toBe(100);
 	});
 });
