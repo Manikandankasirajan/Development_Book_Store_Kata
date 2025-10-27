@@ -1,3 +1,7 @@
+import getOptimizationPossibilityCount from "./getOptimizationPossibilityCount";
+
 export default function canOptimiseBookSets(bookSetAndCountMap) {
-	return bookSetAndCountMap[3] > 0 && bookSetAndCountMap[5] > 0;
+	const OptimizationPossibilityCount =
+		getOptimizationPossibilityCount(bookSetAndCountMap);
+	return OptimizationPossibilityCount > 0 ? true : false;
 }

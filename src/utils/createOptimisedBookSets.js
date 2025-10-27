@@ -1,37 +1,15 @@
-import canOptimiseBookSets from "./canOptimiseBookSets";
-import createBookSetAndCountMap from "./createBookSetAndCountMap";
-import createPlaceholderBookSets from "./createPlaceholderBookSets";
+import getOptimizationPossibilityCount from "./getOptimizationPossibilityCount";
+import getBookSetOfGivenLength from "./getBookSetOfGivenLength";
 
-export default function createOptimisedBookSets(bookSets) {
-	const bookSetAndCountMap = createBookSetAndCountMap(bookSets);
+export default function createOptimisedBookSets(bookSets, bookSetAndCountMap) {
+	const optimizationPossibilityCount =
+		getOptimizationPossibilityCount(bookSetAndCountMap);
 
-	if (canOptimiseBookSets(bookSetAndCountMap)) {
-		const optimisationPairs = Math.min(
-			bookSetAndCountMap[3],
-			bookSetAndCountMap[5]
-		);
-
-		for (let i = 0; i < optimisationPairs; i++) {
-			bookSetAndCountMap[3]--;
-			bookSetAndCountMap[5]--;
-			bookSets.push(createPlaceholderBookSets(4));
-			bookSets.push(createPlaceholderBookSets(4));
-		}
-
-		const optimisedBookSets = bookSets.filter(
-			(set) => set.length !== 5 && set.length !== 3
-		);
-
-		for (const [bookSetSize, count] of Object.entries(bookSetAndCountMap)) {
-			for (let i = 0; i < count; i++) {
-				optimisedBookSets.push(
-					createPlaceholderBookSets(parseInt(bookSetSize))
-				);
-			}
-		}
-
-		return optimisedBookSets;
-	} else {
-		return bookSets;
+	for (let i = 0; i < optimizationPossibilityCount; i++) {
+		const bookSetOf5 = getBookSetOfGivenLength(bookSets, 5);
+		const bookSetOf3 = getBookSetOfGivenLength(bookSets, 3);
+		bookSetOf3.push(bookSetOf5.pop(bookSetOf5.length - 1));
 	}
+
+	return bookSets;
 }
