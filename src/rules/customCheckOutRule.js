@@ -8,9 +8,7 @@ import canOptimiseBookSets from "../utils/canOptimiseBookSets";
 export default function customCheckOutRule(cart) {
 	const bookMap = createBookMapWithTitleAndCount(cart);
 	let bookSets = createBookSetsFromBookMap(bookMap);
-	console.log(bookSets);
 	const bookSetAndCountMap = createBookSetAndCountMap(bookSets);
-	console.log(bookSetAndCountMap);
 	if (canOptimiseBookSets(bookSetAndCountMap)) {
 		bookSets = createOptimisedBookSets(bookSets, bookSetAndCountMap);
 	}
